@@ -15,20 +15,20 @@ export async function createCall(formData) {
     throw new Error("Phone number is required");
   }
 
-  //   try {
-  //     const call = await client.calls.create({
-  //       to: phoneNumber,
-  //       from: process.env.TWILIO_PHONE_NUMBER,
-  //       url: "http://demo.twilio.com/docs/voice.xml", // Replace with your TwiML URL
-  //     });
+  try {
+    const call = await client.calls.create({
+      to: phoneNumber,
+      from: process.env.TWILIO_PHONE_NUMBER,
+      url: "http://demo.twilio.com/docs/voice.xml", // Replace with your TwiML URL
+    });
 
-  //     return {
-  //       success: true,
-  //       callSid: call.sid,
-  //       message: "Call initiated successfully",
-  //     };
-  //   } catch (error) {
-  //     console.error("Twilio Error:", error);
-  //     throw new Error("Failed to initiate call: " + error.message);
-  //   }
+    return {
+      success: true,
+      callSid: call.sid,
+      message: "Call initiated successfully",
+    };
+  } catch (error) {
+    console.error("Twilio Error:", error);
+    throw new Error("Failed to initiate call: " + error.message);
+  }
 }

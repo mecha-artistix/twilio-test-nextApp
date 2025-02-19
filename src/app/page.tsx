@@ -14,10 +14,10 @@ const PhoneCallForm = () => {
 
     try {
       const result = await createCall(formData);
-      // setStatus(result.message);
+      setStatus(result.message);
       formRef.current?.reset();
     } catch (error) {
-      // setStatus(`Error: ${error.message}`);
+      setStatus(`Error: ${error.message}`);
     } finally {
       setPending(false);
     }
